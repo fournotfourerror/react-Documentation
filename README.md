@@ -9,8 +9,11 @@
   
 ### Installation
 `node -v`
+
 `npm -v`
+
 `npm install create-react-app -g`
+
 `create-react-app <project_name>`
 
 `npx create-react-app <project_name>`
