@@ -60,3 +60,45 @@ _We have to use react fragments for avoiding number of divisions._
       <App />
     </>
 ```
+
+### State in React
+_The concept of State provides a way to store the data in a component_
+
+```javascript
+  constructor(){
+    super();
+    this.state={
+      "name":"Hanuman",
+      "role":"Full stack developer"
+    }
+  }
+```
+
+### Manipulating data from a state
+```javascript
+ changeStateValues=()=>{
+    this.setState({
+      "name":"Rajesh",
+      "role":"MERN developer"
+    })
+  }
+  render(){
+    return(
+    <> 
+      <Header />
+    <h2 onMouseOver={this.changeStateValues}> {this.state.name} working as a {this.state.role} </h2> 
+      <App />
+    </>
+    )
+  }
+```
+
+#### Using prevState for manipulating the data of a state
+```javascript
+  incrementCounter=()=>{
+    this.setState(prevState=>(
+      {counter: prevState.counter+1}
+    ))
+  }
+```
+
