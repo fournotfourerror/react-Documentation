@@ -113,3 +113,30 @@ _The concept of State provides a way to store the data in a component_
   }
 ```
 
+#### Using hooks concept for implementing state functionality in functional component
+```javascript
+ import React,{useState} from 'react';
+// import Header from './Header'
+
+
+
+function App(){
+
+  var initialData=()=>{
+    setData({
+      name:"Hanuman",
+      role:"Full stack developer"
+    })
+  }
+
+  const [data,setData]=useState({"name":"Hanuman","role":"Full stack developer"})
+  return(
+    <>
+      <h2 onMouseOver={()=>{setData({name:"Rajesh",role:"MERN developer"})}} onMouseOut={initialData}> {data.name} is working as a {data.role} </h2>
+    </>
+  )
+}
+
+export default App;
+```
+
