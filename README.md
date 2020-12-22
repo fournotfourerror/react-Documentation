@@ -102,3 +102,14 @@ _The concept of State provides a way to store the data in a component_
   }
 ```
 
+#### Decrementing the value of the state
+```javascript
+ decrementCounter=()=>{
+    if(this.state.counter>0){
+    this.setState(prevState=>(
+      {counter: prevState.counter-1}
+    ))
+    }
+  }
+```
+
