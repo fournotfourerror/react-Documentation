@@ -166,3 +166,36 @@ function App(){
 export default App;
 ```
 
+#### Regular expression in React
+```javascript
+ import React,{useState} from 'react';
+
+export default function FormInput(){
+    function testMobile(e){
+        var reg=/^\S+@\S+[.]\S{1,}$/
+        if(reg.test(e.target.value)){
+            setContent({
+                background:"green",
+                text:"Valid Email id"
+            })
+        } else {
+            setContent({
+                background:"red",
+                text:"Invalid Email id"
+            })
+        }
+    }
+    var [content, setContent]=useState({background:"#fff",text:"hi"})
+    return(
+        <div>
+            <article style={{background:content.background, textAlign:"center"}}> {content.text} </article> <br />
+            <form>
+                <input type="text" placeholder="Email id" onKeyUp={(event)=>{testMobile(event)}}/>
+            </form>
+        </div>
+    )
+}
+
+
+```
+
