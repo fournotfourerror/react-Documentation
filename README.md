@@ -213,3 +213,44 @@ export default function FormInput(){
 
 ```
 
+### Live search from JSON
+```javascript
+  import React from 'react';
+import './App.css'
+import {profiles} from './data.json'
+
+export default class Search extends React.Component{
+    constructor(){
+        super();
+        this.state={
+            search:""
+        }
+    }
+
+    searchData=(e)=>{
+        this.setState({search: e.target.value})
+    }
+    render(){
+        const {search} =this.state;
+        console.log(search)
+        const filteredNames=profiles.filter(profileInfo=>{
+            return profileInfo.name.toLowerCase().indexOf(search.toLowerCase())!==-1
+        })
+        return(
+            <div className="container">
+                <input type="text" placeholder="Search..." onKeyUp={(event)=>{this.searchData(event)}}/>
+                <div className="parent">
+                    {
+                        filteredNames.map((item,index)=>(
+                            <div className="child" key={index}>
+                                {item.name}    
+                             </div>
+                        ))
+                    }
+                </div>
+            </div>
+        )
+    }
+}
+```
+
