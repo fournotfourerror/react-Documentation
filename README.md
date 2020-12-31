@@ -7,6 +7,20 @@
   * CSS3
   * JavaScript (ES6)
   
+### Babel && WebPack
+* All the browsers suppoerts `ES-5`.
+* We are using `ES-6` concepts
+* Babel is a tranpiler that converts the new JS code to Older ones.
+
+
+* Minify (CSS, SCSS, SASS, JavaScript)
+* WebPack consists of two functionalities
+ * Loaders
+  * CSS-Loader
+  * SASS-Loader
+  * Babel-Loader
+ * Plugins
+  
 ### Installation
 `node -v`
 
