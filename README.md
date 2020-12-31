@@ -15,11 +15,11 @@
 
 * Minify (CSS, SCSS, SASS, JavaScript)
 * WebPack consists of two functionalities
- * Loaders
-  * CSS-Loader
-  * SASS-Loader
-  * Babel-Loader
- * Plugins
+  * Loaders
+    * CSS-Loader
+    * SASS-Loader
+    * Babel-Loader
+  * Plugins
   
 ### Installation
 `node -v`
