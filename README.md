@@ -1,5 +1,30 @@
 # react-Documentation
 
+### What is ReactJs?
+ReactJs is once an open-source JavaScript library for building user user interfaces specifically for single-page applications. React allows us to create reusable UI components. It is developed & maintained by Facebook. React can be used as a base in the development of single-page application
+	
+### What is the Reason Behind JavaScript Developers Using React JS?
+While building an application, User-interfaces are the collection of on-screen menus, search bars, buttons & anything else a user interacts with the webapplication. Before React JS, developers used to right raw JavaScript language on its own or by using less UI-focused React predecessors like JQuery, which takes much more development time and is quite risky for the opportunities of bugs and errors.
+
+So, in 2011, Facebook engineer Jordan Walke created React JS, to improve the UI development
+
+### Is React JS Front-end or Back-end? Why You Should Use React JS?
+	
+React is used as client-side programming building things that a user will see and interact on-screen in their browser window which makes, React JS a front-end library. Here are some of the reasons below for using React JS:
+
+1. The React JS development techniques are much simpler to grasp because of its component-based approach. ReactJS characteristics to learn and build a professional web (and mobile applications).
+2. It is easy to learn with just previous basic programming knowledge.
+3. The applications made by React JS are easy to test and can be treated as functions, manipulate the React JS view and take a look at the output, triggered actions, functions, events, etc.
+	
+### What Are React JS Key Features?
+**JSX(JavaScript XML):** JSX allows us to write HTML in React. JSX makes it easier to write and add HTML in React. It is the short-form of JavaScript extension (a React extension) acting as a simple JavaScript that allows HTML quoting and uses these HTML tag syntax to render subcomponents. JSX helps developers to modify the Document Object Model (DOM) of the website where DOM is a representative tree of how the website is arranged
+
+**Virtual DOM:** If a developer uses JSX to manipulate and update its DOM, React JS creates an in-memory data structure cache known as “Virtual Document Object Model”. VDOM is a copy of the actual/real DOM of the website and React JS uses the virtual DOM to change the data and then updates in the browser. React JS scans the Virtual DOM to see what the actual changes made by the user and selectively updates that section of the DOM only. This process ensures less loading time & computing power
+
+**React Native:** React has native libraries that were generally announced by Facebook in 2015, which provides react architecture to native applications like iOS & Android. Hire React Native Developers today & build an amazing mobile application for your business
+
+**Single-Way Data Flow:** In React, a set of immutable values is passed to the components renderer as properties in its HTML tags. The component cannot directly modify any properties but can pass a call back function with the help of which we can do modifications. This complete process is known as “properties flow down; actions flow up”.
+	
 ### Prerequisites
 * Node (nodejs.org)
 * Knowledge on
@@ -33,27 +58,21 @@
 `npx create-react-app <project_name>`
 
 ### Components in React
-* Class components
+
+#### What is Component?
+Components are independent and reusable bits/snippit of code. They serve the same purpose as JavaScript functions, but work in isolation and return HTML via render() function. Components come in two types, Those are
+	1. Class components
+	2. Function components
+
+i. Class components
  * For representing a class component we have to use `class` keyword
  * `render()` for returning a statement
  * We have to aquire the properties from base class for implementing.
  
-* Functional components
+ii. Functional components
  * We have to use `function` | `()=>` for implementing a functional component
  * Can return a statement directly
  * High performance than class Component
- 
-## React
-### Features of React
-* Its a library
-* Virtual DOM : _Its enable us to build scalable and fast applications_.
-* JSX
-* Components
-	* Functional Components (Stateless component)
-	* Class Component (Statefull component)
-	* Pure components
-	* Higher Order Components (HOC's)
-* One way data binding
 
 ### States and props in React
 **S**tate provides an ability to store information in the components. With in class component only we can use the state concept. We've to use the constructor method as well as the super method for initializing the state as we need information from the base class. By using `this.state` we can initialize a state. The state should be in object format. 
@@ -179,6 +198,59 @@ Here we go with that
     		}
 	}
 ```
+
+### Pure Components in React:
+
+#### What is Pure components?
+**Pure Components** in React are the components which do not re-renders when the value of state and props has been updated with the same values. If the value of the previous state or props and the new state or props is the same, the component is not re-rendered. Pure Components restricts the re-rendering ensuring the higher performance of the Component
+
+							(or)
+
+**Pure Component** is one of the most significant ways to optimize React applications. The usage of Pure Component gives a considerable increase in performance because it reduces the number of render operation in the application
+
+**Features of React Pure Components:**
+
++ Prevents re-rendering of Component if props or state is the same
++ Takes care of Updating the component implicitly
++ State and Props are Shallow Compared
++ Pure Components are more performant in certain cases
+
+### Higher Order Components (HOC's):
+
+#### What is Higher Order Components(HOC's)?
+
+A higher-order component is a function that takes a component and returns a new component.
+
+*Example:*
+
+```JavaScript
+import React from 'react';
+
+var newData = {
+   data: 'Data from HOC...',
+}
+
+var HOC = ComposedComponent => class extends React.Component {
+   
+      this.setState({
+         data: newData.data
+      });
+   render() {
+      return <ComposedComponent {...this.state} />;
+   }
+};
+class MyComponent extends React.Component {
+   render() {
+      return (
+         <div>
+            <h1>{this.props.data}</h1>
+         </div>
+      )
+   }
+}
+export default HOC(MyComponent);
+```
+
 ### Routing in React (react-router-dom)
 `npm install react-router-dom --save`
 
@@ -346,6 +418,36 @@ _The concept of State provides a way to store the data in a component_
   }
 ```
 
+
+
+#### Hooks:
+
+Hooks provides a way to use the features of class components in the functional components
+
+**useState:** By using this hook we can implement states functionality in functional components. For declaring this hook, we've to use destructuring method.
+
+*Example:*
+
+```javascript
+    import React,{useState} from 'react';
+
+    function HookExample(){
+    let text=`Hi everyone! How are you?`;
+    let maxLength=10;
+
+    const [hide,setHidden]=useState(true);
+    return(
+        <>
+            {hide ? `${text.substr(0,maxLength).trim()}...`: text} <br></br>
+            {hide ? (<button onClick={()=>setHidden(false)}> Read entire text </button>) : 
+            (<button onClick=      {()=>setHidden(true)}> Read less text </button>)}
+        </>
+      )
+  }
+
+export default HookExample;
+```
+
 #### Using hooks concept for implementing state functionality in functional component
 ```javascript
  import React,{useState} from 'react';
@@ -399,7 +501,8 @@ function App(){
 export default App;
 ```
 
-#### Regular expression in React
+#### Regular expression in React:
+
 ```javascript
  import React,{useState} from 'react';
 
@@ -473,3 +576,6 @@ export default class Search extends React.Component{
 }
 ```
 
+### React Routing:
+
+Components are the heart of React's powerful, declarative programming model. React Router is a collection of navigational components that compose declaratively with your application. Whether you want to have bookmarkable URLs for your web app or a composable way to navigate to the web application, React Router works wherever React is rendering
