@@ -17,6 +17,7 @@ So, in 2011, Facebook engineer Jordan Walke created React JS, to improve the UI 
 3. The applications made by React JS are easy to test and can be treated as functions, manipulate the React JS view and take a look at the output, triggered actions, functions, events, etc.
 	
 ### What Are React JS Key Features?
+
 **JSX(JavaScript XML):** JSX allows us to write HTML in React. JSX makes it easier to write and add HTML in React. It is the short-form of JavaScript extension (a React extension) acting as a simple JavaScript that allows HTML quoting and uses these HTML tag syntax to render subcomponents. JSX helps developers to modify the Document Object Model (DOM) of the website where DOM is a representative tree of how the website is arranged
 
 **Virtual DOM:** If a developer uses JSX to manipulate and update its DOM, React JS creates an in-memory data structure cache known as “Virtual Document Object Model”. VDOM is a copy of the actual/real DOM of the website and React JS uses the virtual DOM to change the data and then updates in the browser. React JS scans the Virtual DOM to see what the actual changes made by the user and selectively updates that section of the DOM only. This process ensures less loading time & computing power
@@ -61,6 +62,7 @@ So, in 2011, Facebook engineer Jordan Walke created React JS, to improve the UI 
 
 #### What is Component?
 Components are independent and reusable bits/snippit of code. They serve the same purpose as JavaScript functions, but work in isolation and return HTML via render() function. Components come in two types, Those are
+
 	1. Class components
 	2. Function components
 
