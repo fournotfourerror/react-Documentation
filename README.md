@@ -63,8 +63,8 @@ So, in 2011, Facebook engineer Jordan Walke created React JS, to improve the UI 
 #### What is Component?
 Components are independent and reusable bits/snippit of code. They serve the same purpose as JavaScript functions, but work in isolation and return HTML via render() function. Components come in two types, Those are
 
-	i. Class components
-	ii. Function components
+	1. Class components
+	2. Function components
 
 i. Class components
  * For representing a class component we have to use `class` keyword
@@ -75,6 +75,64 @@ ii. Functional components
  * We have to use `function` | `()=>` for implementing a functional component
  * Can return a statement directly
  * High performance than class Component
+ 
+ ### Styling components
+```javascript
+  // Inline styles
+  <h2 style={{backgroundColor:"green"}}> Sample content </h2>`
+  
+  // Stying component using JavaScript object
+  var style={
+     backgroundColor: "reg",
+     color: "#000"
+   }
+```
+
+#### Applying styles dynamically
+```javascript
+   import React,{useState} from 'react';
+// import Header from './Header'
+import './App.css';
+
+function App(){
+  var style={
+    background:"green"
+  }
+
+  var changeBackground=(e)=>{
+    e.target.setAttribute('class','changeBackground')
+  }
+
+  const [data,setData]=useState({"name":"Hanuman","role":"Full stack developer"})
+  return (
+    <>
+      <h2 onMouseOver={(e)=>{changeBackground(e)}}> {data.name} is working as {data.role}.</h2>
+    </>
+  )
+}
+
+export default App;
+```
+ 
+ ### Composition
+_The process of combining multiple components together_
+
+### React fragment
+_We have to use react fragments for avoiding number of divisions._
+```javascript
+   <React.Fragment>
+    <Header />
+    <h2> Sample heading </h2>
+   </React.Fragment>
+   
+   or
+   
+   <> 
+      <Header />
+      <h2> Hellow world </h2> <h2> Hi everyone</h2> 
+      <App />
+    </>
+```
 
 ### States and props in React
 **S**tate provides an ability to store information in the components. With in class component only we can use the state concept. We've to use the constructor method as well as the super method for initializing the state as we need information from the base class. By using `this.state` we can initialize a state. The state should be in object format. 
@@ -199,64 +257,6 @@ Here we go with that
         		)
     		}
 	}
-```
-
-### Styling components
-```javascript
-  // Inline styles
-  <h2 style={{backgroundColor:"green"}}> Sample content </h2>`
-  
-  // Stying component using JavaScript object
-  var style={
-     backgroundColor: "reg",
-     color: "#000"
-   }
-```
-
-#### Applying styles dynamically
-```javascript
-   import React,{useState} from 'react';
-// import Header from './Header'
-import './App.css';
-
-function App(){
-  var style={
-    background:"green"
-  }
-
-  var changeBackground=(e)=>{
-    e.target.setAttribute('class','changeBackground')
-  }
-
-  const [data,setData]=useState({"name":"Hanuman","role":"Full stack developer"})
-  return (
-    <>
-      <h2 onMouseOver={(e)=>{changeBackground(e)}}> {data.name} is working as {data.role}.</h2>
-    </>
-  )
-}
-
-export default App;
-```
-
-### Composition
-_The process of combining multiple components together_
-
-### React fragment
-_We have to use react fragments for avoiding number of divisions._
-```javascript
-   <React.Fragment>
-    <Header />
-    <h2> Sample heading </h2>
-   </React.Fragment>
-   
-   or
-   
-   <> 
-      <Header />
-      <h2> Hellow world </h2> <h2> Hi everyone</h2> 
-      <App />
-    </>
 ```
 
 ### State in React
@@ -811,7 +811,3 @@ export default class Search extends React.Component{
     }
 }
 ```
-
-### React Routing:
-
-Components are the heart of React's powerful, declarative programming model. React Router is a collection of navigational components that compose declaratively with your application. Whether you want to have bookmarkable URLs for your web app or a composable way to navigate to the web application, React Router works wherever React is rendering
