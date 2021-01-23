@@ -251,7 +251,12 @@ class MyComponent extends React.Component {
 export default HOC(MyComponent);
 ```
 
-### Routing in React (react-router-dom)
+### Routing in React (react-router-dom):
+
+Components are the heart of React's powerful, declarative programming model. React Router is a collection of navigational components that compose declaratively with your application. Whether you want to have bookmarkable URLs for your web app or a composable way to navigate to the web application, React Router works wherever React is rendering
+
+**How to install router-dom?**
+
 `npm install react-router-dom --save`
 
 #### Primary components of React-route-dom:
@@ -576,6 +581,3 @@ export default class Search extends React.Component{
 }
 ```
 
-### React Routing:
-
-Components are the heart of React's powerful, declarative programming model. React Router is a collection of navigational components that compose declaratively with your application. Whether you want to have bookmarkable URLs for your web app or a composable way to navigate to the web application, React Router works wherever React is rendering
