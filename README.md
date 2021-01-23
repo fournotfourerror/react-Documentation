@@ -1,16 +1,16 @@
 # react-Documentation
 
 ### What is ReactJs?
-ReactJs is once an open-source JavaScript library for building user user interfaces specifically for single-page applications. React allows us to create reusable UI components. It is developed & maintained by Facebook. React can be used as a base in the development of single-page application
+	ReactJs is once an open-source JavaScript library for building user user interfaces specifically for single-page applications. React allows us to create reusable UI components. It is developed & maintained by Facebook. React can be used as a base in the development of single-page application
 	
 ### What is the Reason Behind JavaScript Developers Using React JS?
-While building an application, User-interfaces are the collection of on-screen menus, search bars, buttons & anything else a user interacts with the webapplication. Before React JS, developers used to right raw JavaScript language on its own or by using less UI-focused React predecessors like JQuery, which takes much more development time and is quite risky for the opportunities of bugs and errors.
+	While building an application, User-interfaces are the collection of on-screen menus, search bars, buttons & anything else a user interacts with the webapplication. Before React JS, developers used to right raw JavaScript language on its own or by using less UI-focused React predecessors like JQuery, which takes much more development time and is quite risky for the opportunities of bugs and errors.
 
 So, in 2011, Facebook engineer Jordan Walke created React JS, to improve the UI development
 
 ### Is React JS Front-end or Back-end? Why You Should Use React JS?
 	
-React is used as client-side programming building things that a user will see and interact on-screen in their browser window which makes, React JS a front-end library. Here are some of the reasons below for using React JS:
+	React is used as client-side programming building things that a user will see and interact on-screen in their browser window which makes, React JS a front-end library. Here are some of the reasons below for using React JS:
 
 1. The React JS development techniques are much simpler to grasp because of its component-based approach. ReactJS characteristics to learn and build a professional web (and mobile applications).
 2. It is easy to learn with just previous basic programming knowledge.
@@ -199,146 +199,6 @@ Here we go with that
 	}
 ```
 
-### Pure Components in React:
-
-#### What is Pure components?
-**Pure Components** in React are the components which do not re-renders when the value of state and props has been updated with the same values. If the value of the previous state or props and the new state or props is the same, the component is not re-rendered. Pure Components restricts the re-rendering ensuring the higher performance of the Component
-
-							(or)
-
-**Pure Component** is one of the most significant ways to optimize React applications. The usage of Pure Component gives a considerable increase in performance because it reduces the number of render operation in the application
-
-**Features of React Pure Components:**
-
-+ Prevents re-rendering of Component if props or state is the same
-+ Takes care of Updating the component implicitly
-+ State and Props are Shallow Compared
-+ Pure Components are more performant in certain cases
-
-### Higher Order Components (HOC's):
-
-#### What is Higher Order Components(HOC's)?
-
-A higher-order component is a function that takes a component and returns a new component.
-
-*Example:*
-
-```JavaScript
-import React from 'react';
-
-var newData = {
-   data: 'Data from HOC...',
-}
-
-var HOC = ComposedComponent => class extends React.Component {
-   
-      this.setState({
-         data: newData.data
-      });
-   render() {
-      return <ComposedComponent {...this.state} />;
-   }
-};
-class MyComponent extends React.Component {
-   render() {
-      return (
-         <div>
-            <h1>{this.props.data}</h1>
-         </div>
-      )
-   }
-}
-export default HOC(MyComponent);
-```
-
-### Routing in React (react-router-dom):
-
-Components are the heart of React's powerful, declarative programming model. React Router is a collection of navigational components that compose declaratively with your application. Whether you want to have bookmarkable URLs for your web app or a composable way to navigate to the web application, React Router works wherever React is rendering
-
-**How to install router-dom?**
-
-`npm install react-router-dom --save`
-
-#### Primary components of React-route-dom:
-* BrowserRouter
-	
-	Is usefull for initializing the navigation context. This is the parent component of `react-router-dom`
-	
-```javascript
-		<BrowserRouter>
-		</BrowserRoputer>
-```
-* Route
-	
-	Is for specifying the path.
-	
-```javascript
-		<Route exact path="/about" component={About}>
-		</Route>
-```
-
-```javascript
-		<BrowserRouter>
-			<Route exact path="/about" component={About} />
-		</BrowserRouter>
-```
-* Link
-
-	This is for providing event that calls to the path specified in the path of route component.
-	
-```javascript
-		<Link to="/about"> Click me </Link>
-		// <a href="/about"> Click me </a>
-```
-
-Example:
-
-```javascript
-	<BrowserRouter>
-		<Route path="/about" component={About}/> 
-	<BrowserRouter>
-	
-	<Link to="/about" />
-```
-
-Most of the web developers or web designers uses the link attribute (`<a> </a>`) to pass the data from one page to another page.
-
-In react we are using the `<Link> </Link>` attribute instead of anchor tag (`<a> </a>`).
-
-#### But how we are going to pass data from one component to another component using `<Link />` ?
-
-For this we have to pass the parameters in the format of object as shown below.
-
-```javascript
-	<Link to={{pathname:"/resume", data:{id:index}}} className="button"> View profile </Link>
-```
-
-* Here the `pathname` specifies the url we are going to navigate.
-* `data` represents the information which we are passing. Here `id` is the key and the `index` is the value.
-
-If you wanna access that information in destination component, we've to use the `location` keyword.
-
-```javascript
-	import React from 'react';
-	import {profiles} from './data.json';
-	import './App.css';
-
-	let Resume=(props)=>{
-    	var info=profiles[props.location.data.id];
-    	return(
-        	<section className="parent"> 
-            		<article className="basicsCard"> 
-                		<h2> {info.basics.name} </h2>
-            		</article>
-        	</section>
-    		)
-	}
-
-	export default Resume;
-```
-
-
-
 ### Styling components
 ```javascript
   // Inline styles
@@ -349,6 +209,32 @@ If you wanna access that information in destination component, we've to use the 
      backgroundColor: "reg",
      color: "#000"
    }
+```
+
+#### Applying styles dynamically
+```javascript
+   import React,{useState} from 'react';
+// import Header from './Header'
+import './App.css';
+
+function App(){
+  var style={
+    background:"green"
+  }
+
+  var changeBackground=(e)=>{
+    e.target.setAttribute('class','changeBackground')
+  }
+
+  const [data,setData]=useState({"name":"Hanuman","role":"Full stack developer"})
+  return (
+    <>
+      <h2 onMouseOver={(e)=>{changeBackground(e)}}> {data.name} is working as {data.role}.</h2>
+    </>
+  )
+}
+
+export default App;
 ```
 
 ### Composition
@@ -480,31 +366,141 @@ function App(){
 export default App;
 ```
 
-#### Applying styles dynamically
-```javascript
-   import React,{useState} from 'react';
-// import Header from './Header'
-import './App.css';
+### Pure Components in React:
 
-function App(){
-  var style={
-    background:"green"
-  }
+#### What is Pure components?
+**Pure Components** in React are the components which do not re-renders when the value of state and props has been updated with the same values. If the value of the previous state or props and the new state or props is the same, the component is not re-rendered. Pure Components restricts the re-rendering ensuring the higher performance of the Component
 
-  var changeBackground=(e)=>{
-    e.target.setAttribute('class','changeBackground')
-  }
+							(or)
 
-  const [data,setData]=useState({"name":"Hanuman","role":"Full stack developer"})
-  return (
-    <>
-      <h2 onMouseOver={(e)=>{changeBackground(e)}}> {data.name} is working as {data.role}.</h2>
-    </>
-  )
+**Pure Component** is one of the most significant ways to optimize React applications. The usage of Pure Component gives a considerable increase in performance because it reduces the number of render operation in the application
+
+**Features of React Pure Components:**
+
++ Prevents re-rendering of Component if props or state is the same
++ Takes care of Updating the component implicitly
++ State and Props are Shallow Compared
++ Pure Components are more performant in certain cases
+
+### Higher Order Components (HOC's):
+
+#### What is Higher Order Components(HOC's)?
+
+A higher-order component is a function that takes a component and returns a new component.
+
+*Example:*
+
+```JavaScript
+import React from 'react';
+
+var newData = {
+   data: 'Data from HOC...',
 }
 
-export default App;
+var HOC = ComposedComponent => class extends React.Component {
+   
+      this.setState({
+         data: newData.data
+      });
+   render() {
+      return <ComposedComponent {...this.state} />;
+   }
+};
+class MyComponent extends React.Component {
+   render() {
+      return (
+         <div>
+            <h1>{this.props.data}</h1>
+         </div>
+      )
+   }
+}
+export default HOC(MyComponent);
 ```
+
+### Routing in React (react-router-dom)
+`npm install react-router-dom --save`
+
+#### Primary components of React-route-dom:
+* BrowserRouter
+	
+	Is usefull for initializing the navigation context. This is the parent component of `react-router-dom`
+	
+```javascript
+		<BrowserRouter>
+		</BrowserRoputer>
+```
+* Route
+	
+	Is for specifying the path.
+	
+```javascript
+		<Route exact path="/about" component={About}>
+		</Route>
+```
+
+```javascript
+		<BrowserRouter>
+			<Route exact path="/about" component={About} />
+		</BrowserRouter>
+```
+* Link
+
+	This is for providing event that calls to the path specified in the path of route component.
+	
+```javascript
+		<Link to="/about"> Click me </Link>
+		// <a href="/about"> Click me </a>
+```
+
+Example:
+
+```javascript
+	<BrowserRouter>
+		<Route path="/about" component={About}/> 
+	<BrowserRouter>
+	
+	<Link to="/about" />
+```
+
+Most of the web developers or web designers uses the link attribute (`<a> </a>`) to pass the data from one page to another page.
+
+In react we are using the `<Link> </Link>` attribute instead of anchor tag (`<a> </a>`).
+
+#### But how we are going to pass data from one component to another component using `<Link />` ?
+
+For this we have to pass the parameters in the format of object as shown below.
+
+```javascript
+	<Link to={{pathname:"/resume", data:{id:index}}} className="button"> View profile </Link>
+```
+
+* Here the `pathname` specifies the url we are going to navigate.
+* `data` represents the information which we are passing. Here `id` is the key and the `index` is the value.
+
+If you wanna access that information in destination component, we've to use the `location` keyword.
+
+```javascript
+	import React from 'react';
+	import {profiles} from './data.json';
+	import './App.css';
+
+	let Resume=(props)=>{
+    	var info=profiles[props.location.data.id];
+    	return(
+        	<section className="parent"> 
+            		<article className="basicsCard"> 
+                		<h2> {info.basics.name} </h2>
+            		</article>
+        	</section>
+    		)
+	}
+
+	export default Resume;
+```
+
+
+
 
 #### Regular expression in React:
 
@@ -581,3 +577,6 @@ export default class Search extends React.Component{
 }
 ```
 
+### React Routing:
+
+Components are the heart of React's powerful, declarative programming model. React Router is a collection of navigational components that compose declaratively with your application. Whether you want to have bookmarkable URLs for your web app or a composable way to navigate to the web application, React Router works wherever React is rendering
