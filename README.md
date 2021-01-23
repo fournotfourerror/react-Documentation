@@ -471,12 +471,59 @@ Setting default state in component.
 ```
 #### Updating
 * render()
-    *   This method is required for returning a value in the class component.
-    *   This is method is mandatory
+
+_As I have talked earlier, render() is the most used method for any React powered component which returns a JSX with backend data. It is seen as a normal function but render() function has to return something whether it is null. When the component file is called it calls the render() method by default because that component needs to display the HTML markup or we can say JSX syntax._
+
+	* This method is required for returning a value in the class component.
+	* This is method is mandatory
+
+```javascript
+	import React, { Component } from 'react';
+	
+	class App extends Component {
+ 		render() {
+    			return (
+      				<div>
+          				<h1 className="App-title">Welcome to React</h1>
+      				</div>
+    			);
+  		}
+	}
+
+	export default App;
+```
+
+Please take a note here; we must return something, if there is no JSX for the return then null would be perfect, but must return something. In that scenario, you can do something like this.
+
+```javascript
+	import { Component } from 'react';
+	class App extends Component {
+  		render() {
+    			return null;
+  		}
+	}
+
+	export default App;
+```
+
+Remember, you can not define `setState()` inside `render()` function. **Why???** Because `setState()` function changes the state of the application and causing a change in the state called the `render()` function again. So if you write something like this then calling the function stack will go for infinity and application gets the crash.
+
+You can define some variables, perform some operation inside `render()` function, but never use the setState function. In general cases, We are logging out some variable’s output in the `render()` method. It is the function that calls in mounting lifecycle methods.
+
 * shouldComponentUpdate()
     *   It will returns a boolean value (true or false)
     *   It returns `true` value by default
     *   The boolean value that specifiess whether React will continue with rendering or not. 
+    *	You can tell React not to render rows that do not need to be using this method.
+    
+```javascript
+	class ListItem extends Component {
+    		shouldComponentUpdate(nextProps, nextState) {
+        		return nextProps.isFavourite != this.props.isFavourite;
+    		}
+	}
+```
+
 * componentDidUpdate()
     *   This method called when the information updated in DOM.
 ```javascript
