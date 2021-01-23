@@ -63,8 +63,8 @@ So, in 2011, Facebook engineer Jordan Walke created React JS, to improve the UI 
 #### What is Component?
 Components are independent and reusable bits/snippit of code. They serve the same purpose as JavaScript functions, but work in isolation and return HTML via render() function. Components come in two types, Those are
 
-	1. Class components
-	2. Function components
+	i. Class components
+	ii. Function components
 
 i. Class components
  * For representing a class component we have to use `class` keyword
