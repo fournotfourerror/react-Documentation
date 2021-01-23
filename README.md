@@ -366,6 +366,239 @@ function App(){
 export default App;
 ```
 
+#### Life cycle methods of React
+Four phases of a React component
+* Initialization
+* Mounting
+* Updating
+* Unmounting
+
+**Initialization**
+It is the birth phase of the lifecycle of reactJs component. From here , the component starts its journey on a way to the DOM.
+
+* Default Props
+* Initialization State
+
+Setting default props in component
+```javascript
+    import React from 'react';
+
+    class Example extends React.Component{
+    constructor(props){
+        super();
+        this.state={
+            name: " "
+        }
+
+
+    }
+
+    render(){
+        return(
+            <div>
+                <h1> {this.state.name} </h1>
+                <h2> {this.props.name}</h2>
+            </div>
+        )
+      }
+    }
+
+    Example.defaultProps={
+        name: "Kalyan",
+        lastname:"Chakravarthi"
+    }
+
+    export default Example;
+    
+```
+
+Setting default state in component.
+
+```javascript 
+        constructor(props){
+        super();
+        this.state={
+            name: " "
+        }
+       }
+```
+
+**Mounting**
+
+* componentDidMount()
+
+    This functions gets invoked once after the render function is executed for the first time.
+* componentWillMount()
+
+    This functions gets invoked once before render method executed.
+    
+```javascript
+    import React from 'react';
+
+    export default class Practice extends React.Component{
+        constructor(){
+            super();
+            this.state={
+            name:"Hanuman"
+            }
+        }
+        
+        componentWillMount(){
+            this.setState({
+                name:"Ninad"
+            });
+            console.log(this.state.name);
+        }
+
+        componentDidMount(){
+            this.setState({
+                name:"Hi"
+            })
+            console.log(this.state.name);
+
+        }
+        
+        render(){
+            return(
+                <div>
+                    <h1> {this.state.name} </h1>
+                </div>
+            )
+         }
+    }
+```
+#### Updating
+* render()
+    *   This method is required for returning a value in the class component.
+    *   This is method is mandatory
+* shouldComponentUpdate()
+    *   It will returns a boolean value (true or false)
+    *   It returns `true` value by default
+    *   The boolean value that specifiess whether React will continue with rendering or not. 
+* componentDidUpdate()
+    *   This method called when the information updated in DOM.
+```javascript
+        import React from 'react';
+
+        export default class Work extends React.Component{
+            constructor(){
+                super();
+                this.state={
+                    favoriteFood:"Potato fry"
+                 }
+            }
+
+    // componentDidMount(){
+    //     setTimeout(()=>{
+    //         this.setState({favoriteFood:"Carrot fry"})
+    //     },1000)
+    // }
+
+        changeFood=()=>{
+            this.setState({favoriteFood:"Carrot fry"})
+        }
+
+        componentDidUpdate(){
+            document.getElementById("newInfo").innerHTML="My favorite food is   "+this.state.favoriteFood;
+        }
+
+        render(){
+            return (
+                <>
+                 <h2> {this.state.favoriteFood} </h2>
+                 <h3 id="newInfo"> </h3>
+                 <button onClick={this.changeFood}> Change Food </button>
+                </>
+            )
+         }
+    }
+```
+* getDerivedStateFromProps()
+    *   This is the first method that is called when a component gets updated
+    *   We can set the state value by using initial props
+    
+    **Work.js*
+```javascript
+    import React from 'react';
+
+export default class Work extends React.Component{
+    constructor(){
+        super();
+        this.state={
+            favoriteFood:""
+        }
+    }
+
+    static getDerivedStateFromProps(props,state){
+        return {favoriteFood:props.food}
+    }
+
+    render(){
+        return (
+            <>
+    <h2> My favorite food is {this.state.favoriteFood} </h2>
+            </>
+        )
+    }
+}
+```
+
+**App.js**
+
+```javascript
+    import React,{Component} from 'react';
+import Work from './components/Work';
+
+class App extends Component{
+  render(){
+    
+    return (
+      <div className="App card">
+       
+        <Work food="Chicken"/>
+      </div>
+    )
+  }
+}
+
+
+export default App;
+```
+* getSnapshotBeforeUpdate()
+    *   By using this method we can access the state and props values before update.
+ 
+```javascript
+import React from 'react';
+
+export default class Work extends React.Component{
+    constructor(){
+        super();
+        this.state={
+            favoriteFood:"Potato fry"
+        }
+    }
+
+    componentDidMount(){
+        setTimeout(()=>{
+            this.setState({favoriteFood:"Chicken fry"})
+        },3000)
+    }
+
+    getSnapshotBeforeUpdate(prevProp,prevState){
+        document.getElementById("prevValue").innerHTML="The previous state value is "+prevState.favoriteFood;
+    }
+
+    render(){
+        return (
+            <>
+    <h2> My favorite food is {this.state.favoriteFood} </h2>
+    <h3 id="prevValue"> </h3>
+            </>
+        )
+    }
+}
+```
+
 ### Pure Components in React:
 
 #### What is Pure components?
